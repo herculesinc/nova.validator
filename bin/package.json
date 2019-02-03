@@ -1,0 +1,28 @@
+{
+  "name": "@nova/validator",
+  "version": "0.1.0",
+  "description": "Validator module for Nova framework",
+  "keywords": [
+    "nova",
+    "validator"
+  ],
+  "main": "index.js",
+  "typings": "nova-validator.d.ts",
+  "license": "MIT",
+  "author": {
+    "name": "Credo360, Inc.",
+    "email": "developers@credo360.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/herculesinc/nova.validator.git"
+  },
+  "engines": {
+    "node": "10.13.x"
+  },
+  "devDependencies": {
+    "@types/node": "10.12.x",
+    "del": "3.0.x",
+    "gulp": "4.0.x"
+  }
+}
