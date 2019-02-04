@@ -20,7 +20,7 @@ declare module "@nova/validator" {
         authorized? : BaseValidator;
     }
 
-    export const validator: Validator;
+    export const validate: Validator;
 
     // EXCEPTION
     // --------------------------------------------------------------------------------------------
