@@ -4,19 +4,14 @@ declare module "@nova/validator" {
     // --------------------------------------------------------------------------------------------
     export type ErrorDescriptor = [number, string];
 
-    export interface BaseValidator {
-        (value: any, message?: string): any;
-    }
-    
-    export interface DescriptorValidator {
-        (value: any, message?: string, code?: number): any;
-        (value: any, descriptor: ErrorDescriptor): any;
-    }
-    
-    export interface Validator extends BaseValidator {
-        request?    : DescriptorValidator;
-        input?      : BaseValidator;
-        authorized? : BaseValidator;
+    export interface Validator {
+        <T>(value: T, message?: string): T;
+
+        request<T>      (value: T, message?: string, code?: number): T;
+        request<T>      (value: T, descriptor: ErrorDescriptor): T;
+
+        input<T>        (value: T, message?: string): T;
+        authorized<T>   (value: T, message?: string): T;
     }
 
     export const validate: Validator;
@@ -32,7 +27,7 @@ declare module "@nova/validator" {
         stackStart? : Function;
     }
 
-    export class Exception {
+    export class Exception extends Error {
 
         readonly name           : string;
         readonly status         : number;
