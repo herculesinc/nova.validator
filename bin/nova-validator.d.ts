@@ -9,7 +9,6 @@ declare module "@nova/validator" {
     }
     
     export interface DescriptorValidator {
-        (value: any, code?: number): any;
         (value: any, message?: string, code?: number): any;
         (value: any, descriptor: ErrorDescriptor): any;
     }
@@ -25,6 +24,7 @@ declare module "@nova/validator" {
     // EXCEPTION
     // --------------------------------------------------------------------------------------------
     export interface ExceptionOptions {
+        name?       : string;
         status?     : number;
         message?    : string;
         code?       : number;

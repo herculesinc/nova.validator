@@ -29,7 +29,7 @@ export const validate: Validator = function(value: any, message?: string): any {
 validate.request = function(value: any, messageOrDescriptorOrCode?: string | number | ErrorDescriptor, code?: number): any {
     if (value) {
         if (value instanceof Error) {
-            let message: string;
+            let message: string | undefined;
             if (typeof messageOrDescriptorOrCode === 'string') {
                 message = messageOrDescriptorOrCode;
             }
@@ -59,10 +59,14 @@ validate.request = function(value: any, messageOrDescriptorOrCode?: string | num
         }
         else if (typeof messageOrDescriptorOrCode === 'number') {
             code = messageOrDescriptorOrCode;
+            message = 'Error messages not provided';
         }
         else if (messageOrDescriptorOrCode) {
             code = messageOrDescriptorOrCode[0];
             message = messageOrDescriptorOrCode[1];
+        }
+        else {
+            message = 'Error messages not provided';
         }
 
         throw new Exception({

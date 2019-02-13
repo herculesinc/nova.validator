@@ -7,9 +7,11 @@ class Exception extends Error {
     constructor(messageOrOptions, status) {
         if (typeof messageOrOptions === 'string') {
             super(messageOrOptions);
-            this.status = (typeof status !== 'number' || status < 400 || status > 599)
-                ? util_1.HttpStatusCode.InternalServerError : status;
+            this.status =
+                (typeof status !== 'number' || status < 400 || status > 599)
+                    ? util_1.HttpStatusCode.InternalServerError : status;
             Error.captureStackTrace(this, this.constructor);
+            this.name = util_1.HttpCodeNames.get(this.status) || 'Unknown Error';
         }
         else {
             super(messageOrOptions.message);
@@ -24,8 +26,8 @@ class Exception extends Error {
                     : this.cause.message;
             }
             Error.captureStackTrace(this, messageOrOptions.stackStart || this.constructor);
+            this.name = messageOrOptions.name || util_1.HttpCodeNames.get(this.status) || 'Unknown Error';
         }
-        this.name = util_1.HttpCodeNames.get(this.status) || 'Unknown Error';
     }
     // PUBLIC MEMBERS
     // --------------------------------------------------------------------------------------------

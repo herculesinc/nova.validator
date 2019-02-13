@@ -55,10 +55,14 @@ exports.validate.request = function (value, messageOrDescriptorOrCode, code) {
         }
         else if (typeof messageOrDescriptorOrCode === 'number') {
             code = messageOrDescriptorOrCode;
+            message = 'Error messages not provided';
         }
         else if (messageOrDescriptorOrCode) {
             code = messageOrDescriptorOrCode[0];
             message = messageOrDescriptorOrCode[1];
+        }
+        else {
+            message = 'Error messages not provided';
         }
         throw new Exception_1.Exception({
             message: message,

@@ -1,10 +1,11 @@
 {
     "compilerOptions": {
         "target": "es2017",
+        "module": "commonjs",
         "noEmitOnError": true,
-        "sourceMap": true,
+        "strict": true,
         "rootDir": ".",
         "outDir": "bin",
-		"module": "commonjs"
+        "sourceMap": true
     }
 }
