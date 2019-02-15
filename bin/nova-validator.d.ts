@@ -15,33 +15,4 @@ declare module "@nova/validator" {
     }
 
     export const validate: Validator;
-
-    // EXCEPTION
-    // --------------------------------------------------------------------------------------------
-    export interface ExceptionOptions {
-        name?       : string;
-        status?     : number;
-        message?    : string;
-        code?       : number;
-        cause?      : Error;
-        stackStart? : Function;
-    }
-
-    export class Exception extends Error {
-
-        readonly name           : string;
-        readonly status         : number;
-        readonly code?          : number;
-        readonly cause?         : Error;
-    
-        headers?                : { [header: string]: string };
-
-        readonly isClientError  : boolean;
-        readonly isServerError  : boolean;
-
-        constructor(options: ExceptionOptions);
-        constructor(message: string, status?: number);
-
-        toJSON(): any;
-    }
 }

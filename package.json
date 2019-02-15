@@ -1,6 +1,6 @@
 {
   "name": "@nova/validator",
-  "version": "0.1.3",
+  "version": "0.2.0",
   "description": "Validator module for Nova framework",
   "keywords": [
     "nova",
@@ -19,6 +19,9 @@
   },
   "engines": {
     "node": "10.15.x"
+  },
+  "dependencies": {
+    "@nova/core": "0.2.x"
   },
   "devDependencies": {
     "@types/node": "10.12.x",
