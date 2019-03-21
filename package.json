@@ -1,6 +1,6 @@
 {
   "name": "@nova/validator",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Validator module for Nova framework",
   "keywords": [
     "nova",
@@ -21,10 +21,10 @@
     "node": "10.15.x"
   },
   "dependencies": {
-    "@nova/core": "0.2.x"
+    "@nova/core": "0.3.x"
   },
   "devDependencies": {
-    "@types/node": "10.12.x",
+    "@types/node": "10.14.x",
     "del": "3.0.x",
     "gulp": "4.0.x"
   }

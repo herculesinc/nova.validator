@@ -5,7 +5,7 @@ import { Validator, ErrorDescriptor } from '@nova/validator';
 
 // VALIDATORS
 // ================================================================================================
-export const validate: Validator = function(value: any, message?: string): any {
+export const validate: Validator = function<T>(value: T | Error, message?: string): T {
     if (value) {
         if (value instanceof Error) throw new Exception({
             message     : message,
@@ -25,7 +25,7 @@ export const validate: Validator = function(value: any, message?: string): any {
 
 // REQUEST
 // ------------------------------------------------------------------------------------------------
-validate.request = function(value: any, messageOrDescriptorOrCode?: string | number | ErrorDescriptor, code?: number): any {
+validate.request = function<T>(value: T | Error, messageOrDescriptorOrCode?: string | number | ErrorDescriptor, code?: number): T {
     if (value) {
         if (value instanceof Error) {
             let message: string | undefined;
@@ -79,7 +79,7 @@ validate.request = function(value: any, messageOrDescriptorOrCode?: string | num
 
 // AUTHORIZED
 // ------------------------------------------------------------------------------------------------
-validate.authorized = function(value: any, message?: string): any {
+validate.authorized = function<T>(value: T | Error, message?: string): T {
     if (value) {
         if (value instanceof Error) throw new Exception({
             message     : message,
@@ -99,7 +99,7 @@ validate.authorized = function(value: any, message?: string): any {
 
 // INPUTS
 // ------------------------------------------------------------------------------------------------
-validate.input = function(value: any, message?: string): any {
+validate.input = function<T>(value: T | Error, message?: string): T {
     if (value) {
         if (value instanceof Error) throw new Exception({
             message     : message,
