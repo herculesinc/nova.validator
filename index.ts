@@ -1,11 +1,11 @@
 // IMPORTS
 // ================================================================================================
 import { Exception, HttpStatusCode } from '@nova/core';
-import { Validator, ErrorDescriptor } from '@nova/validator';
+import { Validator, Validant, ErrorDescriptor } from '@nova/validator';
 
 // VALIDATORS
 // ================================================================================================
-export const validate: Validator = function<T>(value: T | Error, message?: string): T {
+export const validate: Validator = function<T>(value: Validant<T>, message?: string): T {
     if (value) {
         if (value instanceof Error) throw new Exception({
             message     : message,
@@ -25,7 +25,7 @@ export const validate: Validator = function<T>(value: T | Error, message?: strin
 
 // REQUEST
 // ------------------------------------------------------------------------------------------------
-validate.request = function<T>(value: T | Error, messageOrDescriptorOrCode?: string | number | ErrorDescriptor, code?: number): T {
+validate.request = function<T>(value: Validant<T>, messageOrDescriptorOrCode?: string | number | ErrorDescriptor, code?: number): T {
     if (value) {
         if (value instanceof Error) {
             let message: string | undefined;
@@ -79,7 +79,7 @@ validate.request = function<T>(value: T | Error, messageOrDescriptorOrCode?: str
 
 // AUTHORIZED
 // ------------------------------------------------------------------------------------------------
-validate.authorized = function<T>(value: T | Error, message?: string): T {
+validate.authorized = function<T>(value: Validant<T>, message?: string): T {
     if (value) {
         if (value instanceof Error) throw new Exception({
             message     : message,
@@ -99,7 +99,7 @@ validate.authorized = function<T>(value: T | Error, message?: string): T {
 
 // INPUTS
 // ------------------------------------------------------------------------------------------------
-validate.input = function<T>(value: T | Error, message?: string): T {
+validate.input = function<T>(value: Validant<T>, message?: string): T {
     if (value) {
         if (value instanceof Error) throw new Exception({
             message     : message,
